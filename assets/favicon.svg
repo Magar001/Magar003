@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0F172A"/>
+  <!-- Dire wolf head: angular silhouette, tall ears, pointed muzzle -->
+  <g fill="#F59E0B">
+    <!-- Pointed ears -->
+    <path d="M14 6 L20 22 L26 16 Z"/>
+    <path d="M50 6 L44 22 L38 16 Z"/>
+    <!-- Angular head + jaw, tapering to a point -->
+    <path d="M18 18 L26 14 L38 14 L46 18 L50 26 L48 36 L44 44 L36 52 L32 58 L28 52 L20 44 L16 36 L14 26 Z"/>
+  </g>
+  <!-- Inner darks -->
+  <g fill="#0F172A">
+    <!-- Inner ear left -->
+    <path d="M17 12 L20 20 L23 16 Z"/>
+    <!-- Inner ear right -->
+    <path d="M47 12 L44 20 L41 16 Z"/>
+    <!-- Brow ridge / scowl -->
+    <path d="M19 23 L28 22 L25 27 Z"/>
+    <path d="M45 23 L36 22 L39 27 Z"/>
+    <!-- Snout cleft / muzzle line -->
+    <path d="M30 36 L32 52 L34 36 Z"/>
+    <!-- Nose tip -->
+    <path d="M28 35 L32 30 L36 35 L34 38 L30 38 Z"/>
+    <!-- Mouth slit + bared fangs -->
+    <path d="M24 42 L32 44 L40 42 L38 44 L36 43 L34 47 L32 44 L30 47 L28 43 L26 44 Z"/>
+  </g>
+  <!-- Glowing eyes -->
+  <g fill="#FBBF24">
+    <path d="M23 26 L29 28 L26 32 Z"/>
+    <path d="M41 26 L35 28 L38 32 Z"/>
+  </g>
+</svg>

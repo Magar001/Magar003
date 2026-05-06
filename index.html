@@ -1,138 +1,869 @@
-<!DOCTYPE HTML>
-<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sher Magar — Data Analyst & Full-Stack Developer based in Shrewsbury, MA. Forecaster of football matches in his spare time.">
+<meta property="og:title" content="Sher Magar — Data Analyst, Builder, Football Forecaster">
+<meta property="og:description" content="Data analyst by day, football forecaster by kickoff. Portfolio + live World Cup & Nepal Sport prediction tracker.">
+<title>Sher Magar — Data, Code & Football Predictions</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0F172A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1020;
+    --bg-2:#0F172A;
+    --surface:#FFFFFF;
+    --surface-soft:#FAFAF9;
+    --ink:#0F172A;
+    --ink-soft:#475569;
+    --ink-mute:#64748B;
+    --line:#E2E8F0;
+    --accent:#F59E0B;
+    --accent-2:#EF4444;
+    --good:#10B981;
+    --cool:#06B6D4;
+    --indigo:#312E81;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--surface);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.dark{
+    --surface:#0B1020;
+    --surface-soft:#0F172A;
+    --ink:#F8FAFC;
+    --ink-soft:#CBD5E1;
+    --ink-mute:#94A3B8;
+    --line:#1E293B;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
 
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(180%) blur(14px);
+    background:rgba(255,255,255,0.78);
+    border-bottom:1px solid var(--line);
+  }
+  body.dark nav{background:rgba(11,16,32,0.78)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-weight:700;font-size:20px;letter-spacing:-0.01em}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:14px;font-weight:500}
+  .nav-links a{position:relative;padding:6px 0;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a.hot{color:var(--accent);font-weight:600}
+  .nav-links a::after{
+    content:'';position:absolute;left:0;right:0;bottom:-4px;height:2px;
+    background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
+  }
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .toggle{
+    width:36px;height:22px;border-radius:11px;background:var(--ink);
+    border:none;cursor:pointer;position:relative;transition:background .25s;
+  }
+  .toggle::after{
+    content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;
+    border-radius:50%;background:var(--accent);transition:transform .25s;
+  }
+  body.dark .toggle::after{transform:translateX(14px);background:#FBBF24}
 
-	I would like to thank you htmlup.net for providing me this template. It made my work easier.
--->
-<html>
-	<head>
-		<title>Sher Magar</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="shrtcut icon" type="image/png" href="images/favicon03.png">
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,#0F172A 0%,#1E1B4B 55%,#312E81 100%);
+    color:#fff;position:relative;overflow:hidden;
+    padding:96px 0 120px;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle at 1px 1px,rgba(148,163,184,0.18) 1px,transparent 0);
+    background-size:22px 22px;pointer-events:none;
+  }
+  .hero::after{
+    content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(251,191,36,0.45) 0%,rgba(251,191,36,0) 70%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+  .eyebrow{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:3px;margin-bottom:18px;text-transform:uppercase}
+  .hero h1{
+    font-family:'Fraunces',Georgia,serif;font-weight:700;
+    font-size:clamp(48px,6vw,72px);line-height:1.02;letter-spacing:-0.02em;margin-bottom:18px;
+  }
+  .hero h1 .accent{color:var(--accent)}
+  .hero h2{
+    font-family:'Fraunces',Georgia,serif;font-weight:400;font-style:italic;
+    font-size:clamp(22px,2.4vw,30px);color:#E2E8F0;line-height:1.25;margin-bottom:24px;
+  }
+  .hero h2 em{font-style:italic;color:var(--accent);font-weight:600}
+  .hero p.lede{color:#CBD5E1;font-size:15px;max-width:520px;margin-bottom:32px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:30px;
+    font-weight:600;font-size:14px;cursor:pointer;border:none;transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 6px 20px rgba(245,158,11,0.35)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.4)}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.06)}
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+  .stat-chip{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(251,191,36,0.4);
+    border-radius:18px;padding:22px 24px;backdrop-filter:blur(8px);
+  }
+  .stat-chip .label{font-size:11px;color:var(--accent);letter-spacing:2px;font-weight:600;margin-bottom:8px}
+  .stat-chip .num{font-family:'Fraunces',Georgia,serif;font-size:46px;font-weight:700;line-height:1;color:#fff;margin-bottom:6px}
+  .stat-chip .sub{font-size:13px;color:#CBD5E1}
+  .stat-chip .delta{color:var(--good);font-weight:600;font-size:13px;margin-left:10px}
 
-				<!-- Wrapper -->
-					<div id="wrapper">
+  /* SECTION GENERIC */
+  section{padding:96px 0;border-bottom:1px solid var(--line)}
+  .section-eyebrow{font-size:11px;font-weight:600;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+  .section-title{
+    font-family:'Fraunces',Georgia,serif;font-weight:700;
+    font-size:clamp(28px,3.5vw,40px);line-height:1.15;letter-spacing:-0.01em;margin-bottom:18px;color:var(--ink);
+  }
+  .section-lede{color:var(--ink-soft);max-width:640px;font-size:16px;margin-bottom:48px}
 
-						<!-- Panel (Banner) -->
-							<section class="panel banner right">
-								<div class="content color0 span-3-75">
-									<h1 class="major">Hello, my name<br />
-									is Sher Magar</h1>
-									<p>I am a computer science student; 2020 <strong>graduate</strong>. I am a full stack java developer. I would love to be a part of front-end as well as back-end development team. I do believe, working in agile environment would bring best out of every team member. I am more than happy to be part of team during development cycle of different phases of SDLC. I am passionate about learning new technology and languages and implement them in project to make it sucessfull. I Hope you dig it :)</p>
-									<ul class="actions">
-										<li><a href="#first" class="button primary color1 circle icon solid fa-angle-right">Next</a></li>
-									</ul>
-								</div>
-								<div class="image filtered span-1-75" data-position="25% 25%">
-									<img src="images/pic01.jpg" alt="" />
-								</div>
-							</section>
+  /* ABOUT */
+  .about{background:var(--surface-soft)}
+  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+  .pill{padding:7px 14px;border-radius:14px;font-size:12px;font-weight:500;background:var(--ink);color:#fff}
+  .pill.hot{background:var(--accent);color:#0F172A}
+  .portrait{
+    background:var(--indigo);border-radius:18px;padding:36px 24px;text-align:center;color:#CBD5E1;
+    position:relative;overflow:hidden;
+  }
+  .portrait::before{
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,0.08) 1px,transparent 0);
+    background-size:18px 18px;
+  }
+  .avatar{
+    position:relative;width:140px;height:140px;border-radius:50%;background:var(--accent);
+    margin:0 auto 20px;display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',Georgia,serif;font-size:48px;font-weight:700;color:#0F172A;
+    overflow:hidden;border:3px solid var(--accent);box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .avatar img.hidden{display:none}
+  .portrait .meta{position:relative;font-size:13px}
+  .portrait .meta .green{color:var(--good);font-weight:600}
 
-						<!-- Panel (Spotlight) -->
-							<section class="panel spotlight medium right" id="first">
-								<div class="content span-7">
-									<h2 class="major">About me </h2>
-									<p>My journey starts from mountain side of Nepal. From seeing vehicle for the first time at the age of 11, from speaking only mothertongue language "Magar" to learn Nepali language then to learn English, then to find passion in coding, my journey has been satisfying for me. I have learn to move forward and take positive note from every challenge and learn lesson from every mistake. </p>
-								</div>
-								<div class="image filtered tinted" data-position="top left">
-									<img src="images/pic02.jpg" alt="" />
-								</div>
-							</section>
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:36px}
+  .timeline::before{
+    content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:var(--line);
+  }
+  .job{position:relative;padding-bottom:44px}
+  .job:last-child{padding-bottom:0}
+  .job::before{
+    content:'';position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;
+    background:var(--surface);border:3px solid var(--accent);
+  }
+  .job-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .job-title{font-size:18px;font-weight:600;color:var(--ink)}
+  .job-co{font-weight:500;color:var(--accent)}
+  .job-meta{font-size:13px;color:var(--ink-mute);font-weight:500}
+  .job-loc{font-size:13px;color:var(--ink-mute);margin-bottom:14px}
+  .job ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+  .job li{position:relative;padding-left:18px;color:var(--ink-soft);font-size:14.5px}
+  .job li::before{
+    content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--accent);
+  }
 
-						<!-- Panel -->
-							<section class="panel color1">
-								<div class="intro joined">
-									<h2 class="major">My Port-Folio</h2>
-									<p>I have worked as a junior java developer. I was a part of team to develop multi-tiered web application using J2EE. I was a part of team to develop interfaces using JSPS, html, on TomCat server. I have knowledge of •	Java, microservices, restful web services, spring, MySQL, GitHub, Eclipse, Spring, Agile, Tomcat 7, React, JSP, Servlets, REST, Maven. </p>
-								</div>
-								<div class="inner">
-									<ul class="grid-icons three connected">
-										<li><span class="icon fa-gem"><span class="label">Lorem</span></span></li>
-										<li><span class="icon solid fa-camera-retro"><span class="label">Ipsum</span></span></li>
-										<li><span class="icon solid fa-cog"><span class="label">Dolor</span></span></li>
-										<li><span class="icon solid fa-paper-plane"><span class="label">Sit</span></span></li>
-										<li><span class="icon solid fa-chart-bar"><span class="label">Amet</span></span></li>
-										<li><span class="icon solid fa-code"><span class="label">Nullam</span></span></li>
-									</ul>
-								</div>
-							</section>
+  /* PREDICTIONS */
+  .predict{background:#0B1020;color:#F8FAFC;border-bottom-color:#1E293B}
+  body.dark .predict{background:#070B18}
 
-						<!-- Panel (Spotlight) -->
-							<section class="panel spotlight large left">
-								<div class="content span-5">
-									<h2 class="major">Previous Work Experience </h2>
-									
-								<p>
-									<ul><h1>Raven Software</h1>
-										<li> Involved in planning, analysis, design and implementation of different modules using Agile (Scrum) Methodology.</li>
-										<li> Made use of Web Services using REST and SOAP. </li>
-										<li> Deployed the application on WebLogic and AWS application servers.</li>
+  /* SPORT INTRO with photo */
+  .predict-intro{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;margin-bottom:48px}
+  .fan-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:#1E1B4B;box-shadow:0 24px 60px rgba(15,23,42,0.45)}
+  .fan-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .fan-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,42,0) 50%,rgba(15,23,42,0.8) 100%)}
+  .fan-card .caption{position:absolute;left:18px;right:18px;bottom:14px;color:#fff;font-size:12px;font-weight:500;z-index:2}
+  .fan-card .caption strong{color:var(--accent);font-weight:700;letter-spacing:1px;font-size:10px;text-transform:uppercase;display:block;margin-bottom:4px}
+  @media (max-width:840px){.predict-intro{grid-template-columns:1fr}}
 
-									</ul>		
-								
-							<h2>Global Wordsmith (Intern)</h2>
-								<ul>
-									<li> Interact with our client and provide them translator service.</li>
-									<li>Occasional interact with team memebrs and sort out any technical issues.</li>
-								</ul></p>						</div>
-								<div class="image filtered tinted" data-position="top right">
-									<img src="images/pic03.jpg" alt="" />
-								</div>
-							</section>
+  /* TABS */
+  .tabs{
+    display:inline-flex;gap:6px;background:rgba(255,255,255,0.05);
+    padding:6px;border-radius:14px;margin-bottom:32px;border:1px solid rgba(255,255,255,0.08);
+  }
+  .tab-btn{
+    background:transparent;border:none;color:#CBD5E1;font-family:inherit;
+    font-size:13px;font-weight:600;padding:10px 22px;border-radius:10px;cursor:pointer;
+    transition:background .2s,color .2s;letter-spacing:0.3px;
+  }
+  .tab-btn:hover{color:#fff}
+  .tab-btn.active{background:var(--accent);color:#0F172A}
+  .tab-btn .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin-right:8px;vertical-align:middle;opacity:0.6}
+  .tab-panel{display:none;animation:fade .3s ease}
+  .tab-panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-						<!-- Panel -->
-							<section class="panel">
-								<div class="intro color2">
-									<h2 class="major">Educational Background </h2>
-									<p>I did my bachelor in computer Science from La Roche University located at the north of Pittsburgh, PA. I did my high school from Southwestern HSS, Basundhara, Kathmandu, Nepal. </p>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										<a href="images/gallery/fulls/01.JPG" class="image filtered span-3" data-position="bottom"><img src="images/gallery/thumbs/01.JPG" alt="" /></a>
-										<a href="images/gallery/fulls/02.jpg" class="image filtered span-1-5" data-position="center"><img src="images/gallery/thumbs/02.jpg" alt="" /></a>
-										<a href="images/gallery/fulls/03.jpg" class="image filtered span-1-5" data-position="bottom"><img src="images/gallery/thumbs/03.jpg" alt="" /></a>
-									</div>
-									<a href="images/gallery/fulls/04.jpg" class="image filtered span-2-5" data-position="top"><img src="images/gallery/thumbs/04.jpg" alt="" /></a>
-									<div class="group span-4-5">
-										<a href="images/gallery/fulls/05.jpg" class="image filtered span-3" data-position="top"><img src="images/gallery/thumbs/05.jpg" alt="" /></a>
-										<a href="images/gallery/fulls/06.jpg" class="image filtered span-1-5" data-position="center"><img src="images/gallery/thumbs/06.jpg" alt="" /></a>
-										<a href="images/gallery/fulls/07.JPG" class="image filtered span-1-5" data-position="bottom"><img src="images/gallery/thumbs/07.JPG" alt="" /></a>
-										<a href="images/gallery/fulls/08.JPG" class="image filtered span-3" data-position="top"><img src="images/gallery/thumbs/08.JPG" alt="" /></a>
-									</div>
-									<a href="images/gallery/fulls/09.jpg" class="image filtered span-2-5" data-position="right"><img src="images/gallery/thumbs/09.jpg" alt="" /></a>
-								</div>
-							</section>
+  .predict-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start}
+  .featured-card{
+    background:#FFFFFF;color:#0F172A;border-radius:18px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(15,23,42,0.45);
+  }
+  .featured-head{background:var(--indigo);color:var(--accent);padding:14px 22px;font-size:11px;font-weight:600;letter-spacing:2px}
+  .featured-head.cool{background:#0E7490;color:#A5F3FC}
+  .featured-body{padding:24px}
+  .match-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin:18px 0 18px}
+  .team{text-align:center}
+  .team .badge{
+    width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:700;font-size:14px;margin:0 auto 10px;
+  }
+  .team .name{font-size:14px;font-weight:600}
+  .score{font-family:'Fraunces',Georgia,serif;font-size:42px;font-weight:700;text-align:center}
+  .score-sub{font-size:11px;color:var(--ink-mute);text-align:center;text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+  .conf-bar{position:relative;height:22px;background:#F1F5F9;border-radius:11px;overflow:hidden;margin-top:18px}
+  .conf-fill{height:100%;background:linear-gradient(90deg,var(--good),var(--cool));width:64%;transition:width .4s}
+  .conf-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:11px;font-weight:600;color:#fff}
+  .conf-text .right{color:var(--ink-mute);font-weight:500}
 
-						<!-- Panel -->
-							<section class="panel color4-alt">
-								<div class="intro color4">
-									<h2 class="major">Contact</h2>
-									<p>If you have any inquiry or suggestion for me or wants to connect with me, you can connect with me through various sites.</p>
-								</div>
-								<div class="inner columns divided">
-									
-									<div class="span-1-5">
-										<ul class="contact-icons color1">
-											<li class="icon brands fa-github"><a href="#">@https://github.com/Magar001</a></li>
-											<li class="icon brands fa-linkedin"><a href="#">@https://www.linkedin.com/in/sam-jargha-182496126</a></li>
-											
-										</ul>
-									</div>
-								</div>
-							</section>
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/main.js"></script>
+  .pred-stats{display:grid;gap:16px}
+  .pred-stat{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(251,191,36,0.25);
+    border-radius:16px;padding:22px 24px;
+  }
+  .pred-stat.cool{border-color:rgba(6,182,212,0.4)}
+  .pred-stat .label{font-size:10px;font-weight:600;letter-spacing:2px;color:var(--accent);margin-bottom:10px}
+  .pred-stat.cool .label{color:var(--cool)}
+  .pred-stat .num{font-family:'Fraunces',Georgia,serif;font-size:38px;font-weight:700;line-height:1;color:#fff;margin-bottom:8px}
+  .pred-stat .desc{font-size:12px;color:#CBD5E1}
 
-	</body>
+  /* UPCOMING FIXTURES */
+  .fixtures{margin-top:36px}
+  .fixtures h4{
+    font-size:11px;font-weight:600;letter-spacing:2px;color:var(--accent);
+    margin-bottom:14px;text-transform:uppercase;
+  }
+  .cool .fixtures h4{color:var(--cool)}
+  .fix-list{display:grid;gap:10px}
+  .fix-row{
+    display:grid;grid-template-columns:80px 1fr auto auto;gap:16px;align-items:center;
+    background:rgba(255,255,255,0.04);padding:14px 18px;border-radius:12px;
+    border-left:3px solid var(--accent);
+  }
+  .fix-row.np{border-left-color:var(--cool)}
+  .fix-date{font-size:11px;color:var(--ink-mute);font-weight:500;letter-spacing:1px;text-transform:uppercase}
+  .fix-teams{font-size:14px;color:#F1F5F9;font-weight:500}
+  .fix-pick{font-size:12px;color:#CBD5E1}
+  .fix-conf{font-size:13px;font-weight:700;color:var(--accent);min-width:46px;text-align:right}
+  .fix-row.np .fix-conf{color:var(--cool)}
+
+  /* TRACKER */
+  .tracker{margin-top:48px;background:rgba(255,255,255,0.04);border-radius:18px;padding:32px;border:1px solid rgba(255,255,255,0.08)}
+  .tracker h3{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:600;color:#fff;margin-bottom:6px}
+  .tracker p.sub{color:#94A3B8;font-size:14px;margin-bottom:24px}
+  .tracker-form{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:18px}
+  .tracker-form input,.tracker-form select{
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+    color:#fff;padding:10px 12px;border-radius:8px;font-size:13px;font-family:inherit;
+  }
+  .tracker-form input::placeholder{color:#64748B}
+  .tracker-form input:focus,.tracker-form select:focus{outline:none;border-color:var(--accent)}
+  .tracker-form .col-2{grid-column:span 2}
+  .tracker-form .col-1{grid-column:span 1}
+  .tracker-form button{
+    grid-column:span 7;padding:12px;border:none;border-radius:8px;background:var(--accent);color:#0F172A;
+    font-weight:700;font-size:13px;cursor:pointer;transition:background .15s;
+  }
+  .tracker-form button:hover{background:#FBBF24}
+  .picks-list{display:grid;gap:10px;max-height:340px;overflow-y:auto;padding-right:6px}
+  .pick-row{
+    display:grid;grid-template-columns:auto 1fr auto auto auto;gap:14px;align-items:center;
+    background:rgba(255,255,255,0.05);padding:12px 16px;border-radius:10px;font-size:13px;
+  }
+  .league-tag{
+    font-size:9px;font-weight:700;letter-spacing:1.5px;padding:4px 8px;border-radius:6px;
+    background:rgba(251,191,36,0.15);color:var(--accent);
+  }
+  .league-tag.nepal{background:rgba(6,182,212,0.15);color:var(--cool)}
+  .pick-match{color:#F1F5F9;font-weight:500}
+  .pick-pick{color:#CBD5E1;font-size:12px}
+  .pick-conf{font-weight:600;color:var(--accent);font-size:12px}
+  .result-btn{background:none;border:1px solid rgba(255,255,255,0.2);color:#CBD5E1;padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-family:inherit}
+  .result-btn.win{background:var(--good);border-color:var(--good);color:#fff}
+  .result-btn.loss{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
+  .empty-state{text-align:center;color:#64748B;padding:24px 12px;font-size:13px;font-style:italic}
+
+  /* CONTACT */
+  .contact{background:var(--surface-soft);text-align:left}
+  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+  .contact h2{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,3.4vw,38px);line-height:1.2;font-weight:700;letter-spacing:-0.01em}
+  .contact p.note{color:var(--ink-soft);margin-top:14px;font-size:15px;max-width:480px}
+  .contact-actions{display:flex;flex-direction:column;gap:12px}
+  .contact-actions a{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 22px;border-radius:14px;background:var(--surface);border:1px solid var(--line);
+    font-weight:500;font-size:14px;transition:transform .15s,border-color .15s;
+  }
+  .contact-actions a:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .contact-actions .arrow{color:var(--accent);font-weight:700}
+
+  footer{padding:32px 0;text-align:center;color:var(--ink-mute);font-size:12px}
+
+  /* RESPONSIVE */
+  @media (max-width:840px){
+    .hero{padding:64px 0 80px}
+    .hero-inner,.about-grid,.predict-grid,.contact-grid{grid-template-columns:1fr;gap:32px}
+    .nav-links{gap:16px}
+    .nav-links a:not(.hot):not(.toggle-wrap){display:none}
+    section{padding:64px 0}
+    .tracker-form{grid-template-columns:repeat(2,1fr)}
+    .tracker-form .col-2{grid-column:span 2}
+    .tracker-form button{grid-column:span 2}
+    .pick-row{grid-template-columns:1fr 1fr;gap:8px}
+    .fix-row{grid-template-columns:1fr 1fr;gap:8px}
+    .tabs{display:flex;width:100%}
+    .tab-btn{flex:1;padding:10px 12px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand">sher<span>.</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#predictions" class="hot">Predictions</a>
+      <a href="#contact">Contact</a>
+      <button class="toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Portfolio · Football · Play</div>
+      <h1>Sher Magar<span class="accent">.</span></h1>
+      <h2>Data analyst by day,<br><em>football forecaster by kickoff.</em></h2>
+      <p class="lede">Six years building data pipelines, forecasts and full-stack systems — from sushi-store demand prediction at Hana Group to AWS automation at Capital One. Outside work, I call football matches before kickoff and keep score.</p>
+      <div class="cta-row">
+        <a href="#predictions" class="btn btn-primary">See my predictions →</a>
+        <a href="#work" class="btn btn-ghost">View work</a>
+      </div>
+    </div>
+    <div class="stat-chip">
+      <div class="label">Season hit-rate</div>
+      <div class="num"><span id="heroPct">68</span>%<span class="delta">▲ +4.2</span></div>
+      <div class="sub">across <span id="heroN">25</span> tracked picks</div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="section-eyebrow">01 / About</div>
+        <h2 class="section-title">Sports fan. Engineer. Match-day forecaster.</h2>
+        <p class="section-lede">I build clean, modern systems and obsess over data — especially when it tells me which team is about to win. Currently a Data Analyst at Hana Group North America, previously a Software Developer at Capital One. CompTIA Security+ certified, Celtics on the TV, Pirates on the cap.</p>
+        <div class="pills">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Tableau</span>
+          <span class="pill">AWS</span>
+          <span class="pill">Java · Spring</span>
+          <span class="pill">React</span>
+          <span class="pill hot">Football stats</span>
+        </div>
+      </div>
+      <div class="portrait">
+        <div class="avatar">
+          <img src="assets/profile.jpg" alt="Sher Magar" id="profilePic" onerror="this.classList.add('hidden')">
+          <span id="initialsFallback">SM</span>
+        </div>
+        <div class="meta">
+          <strong>Shrewsbury, MA</strong><br>
+          <span class="green">● Open to opportunities</span><br><br>
+          A journeyman from the country of Mt. Everest to the USA
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-eyebrow">02 / Work</div>
+    <h2 class="section-title">Things I&rsquo;ve shipped.</h2>
+    <p class="section-lede">Six years across data analytics, cloud infrastructure and backend engineering. Each role taught me a different side of moving data reliably.</p>
+
+    <div class="timeline">
+      <div class="job">
+        <div class="job-head">
+          <div class="job-title">Data Analyst &middot; <span class="job-co">Hana Group North America</span></div>
+          <div class="job-meta">Jan 2024 – Present</div>
+        </div>
+        <div class="job-loc">Shrewsbury, MA</div>
+        <ul>
+          <li>Built time-series sales forecasting models in Python on 5 years of history, powering demand predictions across multiple sushi retail locations.</li>
+          <li>Shipped Tableau dashboards (WoW / MoM / YoY) giving store managers real-time performance visibility.</li>
+          <li>Cut food waste by cross-referencing sales velocity with inventory — minimizing over-production across multi-store ops.</li>
+          <li>Optimized prep scheduling by separating peak windows for light vs. heavy menu items, reducing bottlenecks.</li>
+          <li>Queried Aurora &amp; RDS via SQL to support scalable reporting pipelines straight to store tablets.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div class="job-title">Software Developer &middot; <span class="job-co">Capital One</span></div>
+          <div class="job-meta">Nov 2021 – Nov 2023</div>
+        </div>
+        <div class="job-loc">Tysons Corner, VA</div>
+        <ul>
+          <li>Built AWS Lambda functions automating data transfers between upstream sources and downstream teams via OneStream pipelines.</li>
+          <li>Led cybersecurity vulnerability mitigation, enforcing IAM roles and policies for compliant data access across environments.</li>
+          <li>Provisioned isolated dev/QA/prod environments with Ansible for repeatable infrastructure deploys.</li>
+          <li>Designed Splunk dashboards and CloudWatch + SNS alerting for proactive incident response.</li>
+          <li>Automated CI/CD with Jenkins, Docker and Ansible — webhook-triggered builds across repos.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div class="job-title">Java Software Developer &middot; <span class="job-co">Freeman Company</span></div>
+          <div class="job-meta">Aug 2020 – Sep 2021</div>
+        </div>
+        <div class="job-loc">Dallas-Fort Worth, TX</div>
+        <ul>
+          <li>Developed event-driven backend systems with Java &amp; Spring — REST APIs and microservices for large-scale event ops.</li>
+          <li>Modernized a legacy version control environment, reducing technical debt across aging infrastructure.</li>
+          <li>Designed MySQL schemas and built React features wired to backend APIs.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div class="job-title">Junior Java Developer &middot; <span class="job-co">helpmedotcom</span></div>
+          <div class="job-meta">Jan 2018 – Aug 2019</div>
+        </div>
+        <div class="job-loc">Kathmandu, Nepal</div>
+        <ul>
+          <li>Built web pages with HTML, CSS and JavaScript for a software solutions company.</li>
+          <li>Contributed UI/UX work — website mockups and Photoshop visual assets.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="predictions" class="predict">
+  <div class="wrap">
+    <div class="section-eyebrow">03 / Predictions Lab</div>
+
+    <div class="predict-intro">
+      <div>
+        <h2 class="section-title" style="color:#fff;margin-bottom:18px">Football, called before kickoff.</h2>
+        <p class="section-lede" style="color:#CBD5E1;margin-bottom:0">Same forecasting brain that powers demand models at work, pointed at the pitch. Soccer is the main lab — Nepal Sport sits in its own tab. Two cities live rent-free in my head: Boston for the Celtics, Pittsburgh for the Pirates.</p>
+      </div>
+      <div class="fan-card">
+        <img src="assets/sport.jpg" alt="Sher in Celtics gear and a Pirates cap, canyon backdrop" loading="lazy">
+        <div class="caption"><strong>Off the clock</strong>Celtics jacket, Pirates cap, somewhere between Boston and Pittsburgh.</div>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="soccer" role="tab"><span class="dot"></span>Soccer · World Cup</button>
+      <button class="tab-btn" data-tab="nepal" role="tab"><span class="dot"></span>Nepal Sport</button>
+    </div>
+
+    <!-- ===== SOCCER TAB ===== -->
+    <div class="tab-panel active" id="tab-soccer" role="tabpanel">
+      <div class="predict-grid">
+        <div class="featured-card">
+          <div class="featured-head">FIFA WORLD CUP 2026 · QUARTER FINAL</div>
+          <div class="featured-body">
+            <div style="font-size:13px;color:var(--ink-mute)">Sat 4 Jul · MetLife Stadium</div>
+            <div class="match-row">
+              <div class="team"><div class="badge" style="background:#22C55E">BRA</div><div class="name">Brazil</div></div>
+              <div><div class="score">2 – 1</div><div class="score-sub">my pick</div></div>
+              <div class="team"><div class="badge" style="background:#0EA5E9">ARG</div><div class="name">Argentina</div></div>
+            </div>
+            <div class="conf-bar">
+              <div class="conf-fill" style="width:64%"></div>
+              <div class="conf-text"><span>64% confidence</span><span class="right">view rationale →</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pred-stats">
+          <div class="pred-stat">
+            <div class="label">WORLD CUP TRACKER</div>
+            <div class="num"><span id="wcCorrect">23</span> / <span id="wcTotal">32</span></div>
+            <div class="desc">picks correct so far</div>
+          </div>
+          <div class="pred-stat">
+            <div class="label">CURRENT STREAK</div>
+            <div class="num">🔥 <span id="wcStreak">5</span></div>
+            <div class="desc">consecutive correct calls</div>
+          </div>
+          <div class="pred-stat">
+            <div class="label">AVG CONFIDENCE</div>
+            <div class="num"><span id="wcAvgConf">61</span>%</div>
+            <div class="desc">across logged soccer picks</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fixtures">
+        <h4>Upcoming fixtures · my picks</h4>
+        <div class="fix-list" id="soccerFixtures">
+          <div class="fix-row">
+            <div class="fix-date">Sun 5 Jul</div>
+            <div><div class="fix-teams">France vs Germany</div><div class="fix-pick">My pick: France 1-0</div></div>
+            <div></div>
+            <div class="fix-conf">58%</div>
+          </div>
+          <div class="fix-row">
+            <div class="fix-date">Mon 6 Jul</div>
+            <div><div class="fix-teams">Spain vs Portugal</div><div class="fix-pick">My pick: Spain 2-1</div></div>
+            <div></div>
+            <div class="fix-conf">62%</div>
+          </div>
+          <div class="fix-row">
+            <div class="fix-date">Tue 7 Jul</div>
+            <div><div class="fix-teams">Netherlands vs England</div><div class="fix-pick">My pick: Draw 1-1</div></div>
+            <div></div>
+            <div class="fix-conf">49%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== NEPAL SPORT TAB ===== -->
+    <div class="tab-panel" id="tab-nepal" role="tabpanel">
+      <div class="predict-grid">
+        <div class="featured-card">
+          <div class="featured-head cool">MARTYR'S MEMORIAL A-DIVISION · MATCHWEEK 12</div>
+          <div class="featured-body">
+            <div style="font-size:13px;color:var(--ink-mute)">Sat 11 May · Dasharath Stadium, Kathmandu</div>
+            <div class="match-row">
+              <div class="team"><div class="badge" style="background:#DC2626">MMC</div><div class="name">Machhindra</div></div>
+              <div><div class="score">1 – 0</div><div class="score-sub">my pick</div></div>
+              <div class="team"><div class="badge" style="background:#0F172A">3SC</div><div class="name">Three Star</div></div>
+            </div>
+            <div class="conf-bar">
+              <div class="conf-fill" style="width:67%"></div>
+              <div class="conf-text"><span>67% confidence</span><span class="right">view rationale →</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pred-stats">
+          <div class="pred-stat cool">
+            <div class="label">A-DIVISION ACCURACY</div>
+            <div class="num"><span id="npPct">71</span>%</div>
+            <div class="desc">across the season</div>
+          </div>
+          <div class="pred-stat cool">
+            <div class="label">NEPAL CRICKET</div>
+            <div class="num"><span id="cricCorrect">8</span> / <span id="cricTotal">12</span></div>
+            <div class="desc">T20I picks this year</div>
+          </div>
+          <div class="pred-stat cool">
+            <div class="label">BEST CALL</div>
+            <div class="num">🇳🇵</div>
+            <div class="desc">Nepal beat Oman in 2024 T20I — called it at 32%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fixtures">
+        <h4>Upcoming Nepal fixtures · my picks</h4>
+        <div class="fix-list" id="nepalFixtures">
+          <div class="fix-row np">
+            <div class="fix-date">Sun 12 May</div>
+            <div><div class="fix-teams">Manang Marsyangdi vs Friends Club</div><div class="fix-pick">My pick: Manang 2-1</div></div>
+            <div></div>
+            <div class="fix-conf">71%</div>
+          </div>
+          <div class="fix-row np">
+            <div class="fix-date">Wed 15 May</div>
+            <div><div class="fix-teams">Church Boys vs Sankata</div><div class="fix-pick">My pick: Church Boys 1-0</div></div>
+            <div></div>
+            <div class="fix-conf">55%</div>
+          </div>
+          <div class="fix-row np">
+            <div class="fix-date">Sat 18 May</div>
+            <div><div class="fix-teams">Nepal vs UAE (T20I)</div><div class="fix-pick">My pick: Nepal by 12 runs</div></div>
+            <div></div>
+            <div class="fix-conf">48%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SHARED TRACKER ===== -->
+    <div class="tracker">
+      <h3>Live pick tracker</h3>
+      <p class="sub">Log a new prediction. Picks persist on this device — grade them after the match to update accuracy.</p>
+      <form class="tracker-form" id="pickForm" autocomplete="off">
+        <select name="league" class="col-1" required>
+          <option value="WC">World Cup</option>
+          <option value="EPL">EPL / Club</option>
+          <option value="NEPAL">Nepal A-Div</option>
+          <option value="CRICKET">Nepal Cricket</option>
+        </select>
+        <input type="text" name="match" class="col-2" placeholder="e.g. Brazil vs Argentina" required>
+        <input type="text" name="pick"  class="col-2" placeholder="My pick (e.g. Brazil 2-1)" required>
+        <input type="number" name="conf" class="col-1" placeholder="% conf" min="1" max="99" required>
+        <input type="text" name="note" class="col-1" placeholder="rationale (optional)">
+        <button type="submit">Add prediction</button>
+      </form>
+      <div class="picks-list" id="picksList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="section-eyebrow">04 / Contact</div>
+        <h2>Let&rsquo;s talk data, code, or football.</h2>
+        <p class="note">Currently based in Shrewsbury, MA. Open to data analyst and full-stack roles, freelance projects, or just a chat about who&rsquo;s winning the next match.</p>
+      </div>
+      <div class="contact-actions">
+        <a href="mailto:magar.sherbahadur11@gmail.com">Email me <span class="arrow">→</span></a>
+        <a href="https://www.linkedin.com/in/sher-magar-182496126" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+        <a href="https://github.com/shermagar" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+        <a href="assets/resume.pdf" download>Download resume (PDF) <span class="arrow">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 shermagar.com.np · Built with care in Shrewsbury, MA
+</footer>
+
+<script>
+  // Hide initials when image actually loads
+  (function(){
+    var img = document.getElementById('profilePic');
+    var fb  = document.getElementById('initialsFallback');
+    if(!img) return;
+    img.addEventListener('load', function(){ fb.style.display='none'; });
+    if(img.complete && img.naturalWidth>0) fb.style.display='none';
+  })();
+
+  // Theme toggle (persisted)
+  (function(){
+    var saved = localStorage.getItem('theme');
+    if(saved==='dark') document.body.classList.add('dark');
+    var btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', function(){
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    });
+  })();
+
+  // Active nav link on scroll
+  (function(){
+    var sections = document.querySelectorAll('section, header.hero');
+    var links = document.querySelectorAll('.nav-links a[href^="#"]');
+    function onScroll(){
+      var pos = window.scrollY + 90;
+      var current = null;
+      sections.forEach(function(s){ if(s.offsetTop <= pos) current = s.id; });
+      links.forEach(function(l){
+        l.classList.toggle('active', l.getAttribute('href') === '#'+current);
+      });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // Tabs
+  (function(){
+    var btns = document.querySelectorAll('.tab-btn');
+    var panels = document.querySelectorAll('.tab-panel');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){x.classList.remove('active')});
+        panels.forEach(function(p){p.classList.remove('active')});
+        b.classList.add('active');
+        var t = document.getElementById('tab-'+b.dataset.tab);
+        if(t) t.classList.add('active');
+      });
+    });
+  })();
+
+  // Predictions tracker
+  (function(){
+    var KEY = 'sm_picks_v2';
+    var SOCCER_LEAGUES = ['WC','EPL'];
+    var NEPAL_LEAGUES  = ['NEPAL','CRICKET'];
+
+    var seed = [
+      {id:1, league:'WC',     match:'Brazil vs Argentina',           pick:'Brazil 2-1',     conf:64, result:'win'},
+      {id:2, league:'WC',     match:'France vs Germany',             pick:'France 1-0',     conf:58, result:'win'},
+      {id:3, league:'WC',     match:'Spain vs England',              pick:'Spain 2-2',      conf:52, result:'loss'},
+      {id:4, league:'EPL',    match:'Arsenal vs Man City',           pick:'Arsenal 1-0',    conf:55, result:'win'},
+      {id:5, league:'EPL',    match:'Liverpool vs Chelsea',          pick:'Liverpool 3-1',  conf:67, result:'win'},
+      {id:6, league:'NEPAL',  match:'Machhindra vs Three Star',      pick:'Machhindra 1-0', conf:67, result:'win'},
+      {id:7, league:'NEPAL',  match:'Manang vs Friends Club',        pick:'Manang 2-1',     conf:71, result:''},
+      {id:8, league:'CRICKET',match:'Nepal vs Oman (T20I)',          pick:'Nepal by 18',    conf:32, result:'win'}
+    ];
+
+    function load(){
+      try{ var raw = localStorage.getItem(KEY); if(raw) return JSON.parse(raw); }catch(e){}
+      localStorage.setItem(KEY, JSON.stringify(seed));
+      return seed.slice();
+    }
+    function save(arr){ localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+    var picks = load();
+    var listEl = document.getElementById('picksList');
+    var form   = document.getElementById('pickForm');
+
+    function escapeHtml(s){
+      return String(s||'').replace(/[&<>"']/g, function(c){
+        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+      });
+    }
+
+    function leagueLabel(l){
+      return l==='NEPAL' ? 'NEPAL FC' : l==='CRICKET' ? 'CRICKET' : l==='EPL' ? 'EPL' : 'WC';
+    }
+    function leagueClass(l){
+      return (l==='NEPAL'||l==='CRICKET') ? 'league-tag nepal' : 'league-tag';
+    }
+
+    function render(){
+      if(!picks.length){
+        listEl.innerHTML = '<div class="empty-state">No picks yet. Add your first one above ↑</div>';
+      } else {
+        listEl.innerHTML = picks.slice().reverse().map(function(p){
+          var winClass  = p.result==='win'  ? 'result-btn win'  : 'result-btn';
+          var lossClass = p.result==='loss' ? 'result-btn loss' : 'result-btn';
+          return '<div class="pick-row">'+
+                   '<span class="'+leagueClass(p.league)+'">'+leagueLabel(p.league)+'</span>'+
+                   '<div><div class="pick-match">'+escapeHtml(p.match)+'</div>'+
+                        '<div class="pick-pick">'+escapeHtml(p.pick)+(p.note?' · '+escapeHtml(p.note):'')+'</div></div>'+
+                   '<span class="pick-conf">'+p.conf+'%</span>'+
+                   '<button class="'+winClass+'"  data-id="'+p.id+'" data-act="win">W</button>'+
+                   '<button class="'+lossClass+'" data-id="'+p.id+'" data-act="loss">L</button>'+
+                 '</div>';
+        }).join('');
+      }
+      updateStats();
+    }
+
+    function isSoccer(p){ return SOCCER_LEAGUES.indexOf(p.league)>=0; }
+    function isNepal(p){  return NEPAL_LEAGUES.indexOf(p.league)>=0; }
+    function isCricket(p){return p.league==='CRICKET'; }
+    function isNepalFC(p){return p.league==='NEPAL'; }
+    function graded(arr){ return arr.filter(function(p){return p.result==='win'||p.result==='loss';}); }
+
+    function updateStats(){
+      // hero
+      var all = graded(picks);
+      var wins = all.filter(function(p){return p.result==='win';}).length;
+      document.getElementById('heroPct').textContent = all.length ? Math.round(wins/all.length*100) : 0;
+      document.getElementById('heroN').textContent   = all.length;
+
+      // soccer (WC tracker shown as WC-only)
+      var wc = graded(picks.filter(function(p){return p.league==='WC';}));
+      var wcW = wc.filter(function(p){return p.result==='win';}).length;
+      document.getElementById('wcCorrect').textContent = wcW;
+      document.getElementById('wcTotal').textContent   = wc.length;
+
+      // streak across soccer (latest-first, until first loss)
+      var soccerOrdered = picks.filter(isSoccer).filter(function(p){return p.result==='win'||p.result==='loss';}).reverse();
+      var streak = 0;
+      for(var i=0;i<soccerOrdered.length;i++){ if(soccerOrdered[i].result==='win') streak++; else break; }
+      document.getElementById('wcStreak').textContent = streak;
+
+      // avg confidence of all soccer picks
+      var sp = picks.filter(isSoccer);
+      var avg = sp.length ? Math.round(sp.reduce(function(s,p){return s+(p.conf||0);},0)/sp.length) : 0;
+      document.getElementById('wcAvgConf').textContent = avg;
+
+      // nepal football
+      var np = graded(picks.filter(isNepalFC));
+      var npW = np.filter(function(p){return p.result==='win';}).length;
+      document.getElementById('npPct').textContent = np.length ? Math.round(npW/np.length*100) : 0;
+
+      // cricket
+      var cric = graded(picks.filter(isCricket));
+      var cricW = cric.filter(function(p){return p.result==='win';}).length;
+      document.getElementById('cricCorrect').textContent = cricW;
+      document.getElementById('cricTotal').textContent   = cric.length;
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var data = new FormData(form);
+      picks.push({
+        id: Date.now(),
+        league: data.get('league'),
+        match:  data.get('match'),
+        pick:   data.get('pick'),
+        conf:   parseInt(data.get('conf'),10),
+        note:   (data.get('note')||'').trim(),
+        result: ''
+      });
+      save(picks); form.reset(); render();
+    });
+
+    listEl.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-id]');
+      if(!btn) return;
+      var id  = parseInt(btn.dataset.id,10);
+      var act = btn.dataset.act;
+      picks = picks.map(function(p){
+        if(p.id===id){ p.result = (p.result===act ? '' : act); }
+        return p;
+      });
+      save(picks); render();
+    });
+
+    render();
+  })();
+
+  // Konami easter egg
+  (function(){
+    var seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    var i = 0;
+    document.addEventListener('keydown', function(e){
+      if(e.key === seq[i]){
+        i++;
+        if(i===seq.length){
+          document.body.style.transition='transform .6s';
+          document.body.style.transform='rotate(360deg)';
+          setTimeout(function(){document.body.style.transform='';},700);
+          i=0;
+        }
+      } else { i = (e.key===seq[0]) ? 1 : 0; }
+    });
+  })();
+</script>
+</body>
 </html>
