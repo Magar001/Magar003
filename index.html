@@ -308,6 +308,129 @@
   .result-btn.loss{background:var(--accent-2);border-color:var(--accent-2);color:#fff}
   .empty-state{text-align:center;color:#64748B;padding:24px 12px;font-size:13px;font-style:italic}
 
+  /* WC 2026 BRACKET — FULL PAGE SECTION */
+  .bracket-section{
+    background:linear-gradient(180deg,#070B18 0%,#0B1020 60%,#0F172A 100%);
+    color:#F8FAFC;border-bottom-color:#1E293B;position:relative;overflow:hidden;
+  }
+  .bracket-section::before{
+    content:'';position:absolute;top:-100px;right:-120px;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(251,191,36,0.15) 0%,rgba(251,191,36,0) 70%);
+    pointer-events:none;
+  }
+  .bracket-section::after{
+    content:'';position:absolute;bottom:-120px;left:-120px;width:480px;height:480px;
+    background:radial-gradient(circle,rgba(220,38,38,0.12) 0%,rgba(220,38,38,0) 70%);
+    pointer-events:none;
+  }
+  .bracket-section .wrap{position:relative;z-index:2}
+  .bracket-section .section-title{color:#fff}
+  .bracket-section .section-lede{color:#CBD5E1;max-width:680px}
+
+  .tourney-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 36px}
+  .chip-card{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+    border-radius:14px;padding:18px 20px;transition:border-color .15s,transform .15s;
+  }
+  .chip-card:hover{border-color:rgba(251,191,36,0.4);transform:translateY(-2px)}
+  .chip-card.gold{background:linear-gradient(135deg,rgba(245,158,11,0.16),rgba(239,68,68,0.12));border-color:rgba(251,191,36,0.5)}
+  .chip-card .chip-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+  .chip-card .chip-val{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:700;color:#fff;line-height:1.1;margin-bottom:4px}
+  .chip-card .chip-sub{font-size:12px;color:#94A3B8}
+
+  .bracket-headline{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:28px}
+  .bracket-headline h3{font-family:'Fraunces',Georgia,serif;font-size:26px;color:#fff;font-weight:700;margin-bottom:8px;line-height:1.2}
+  .bracket-headline p{color:#CBD5E1;font-size:14px;max-width:560px}
+  .champion-tag{
+    background:linear-gradient(135deg,#F59E0B,#EF4444);color:#0F172A;
+    padding:10px 18px;border-radius:14px;font-weight:700;font-size:12px;letter-spacing:1.5px;
+    text-transform:uppercase;box-shadow:0 8px 24px rgba(245,158,11,0.35);white-space:nowrap;
+  }
+
+  .bracket{
+    display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:12px;
+    background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;padding:22px 16px;overflow-x:auto;
+  }
+  .round{display:flex;flex-direction:column;justify-content:space-around;min-height:580px;gap:8px}
+  .round.sf,.round.final{justify-content:center}
+  .round-label{
+    font-size:9px;font-weight:700;letter-spacing:2px;color:var(--accent);
+    text-align:center;text-transform:uppercase;margin-bottom:6px;opacity:0.85;
+  }
+
+  .bx-match{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+    border-radius:10px;padding:6px 8px;display:grid;gap:3px;
+    transition:transform .15s,border-color .15s,box-shadow .15s;
+  }
+  .bx-match:hover{transform:translateY(-1px);border-color:rgba(251,191,36,0.4);box-shadow:0 6px 16px rgba(0,0,0,0.2)}
+  .bx-team{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:5px 8px;border-radius:6px;color:#94A3B8;font-size:11px;font-weight:500;
+  }
+  .bx-team .nm{display:flex;align-items:center;gap:8px;letter-spacing:0.5px}
+  .bx-team .dot{width:8px;height:8px;border-radius:2px;display:inline-block;flex-shrink:0}
+  .bx-team .sc{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:13px;color:#CBD5E1}
+  .bx-team.win{
+    background:rgba(251,191,36,0.14);color:#fff;font-weight:700;
+    border-left:3px solid var(--accent);padding-left:5px;
+  }
+  .bx-team.win .sc{color:#FBBF24}
+
+  .bx-match.final{
+    background:linear-gradient(135deg,rgba(245,158,11,0.18),rgba(239,68,68,0.18));
+    border:1.5px solid rgba(251,191,36,0.55);padding:12px;box-shadow:0 12px 30px rgba(245,158,11,0.18);
+  }
+  .bx-match.final .bx-team{padding:7px 10px;font-size:13px}
+  .bx-match.final .bx-team .sc{font-size:17px}
+
+  .trophy-cap{text-align:center;margin-bottom:18px}
+  .trophy-cap .ico{font-size:46px;line-height:1;filter:drop-shadow(0 4px 10px rgba(245,158,11,0.5))}
+  .trophy-cap .who{font-family:'Fraunces',Georgia,serif;font-size:22px;color:#fff;font-weight:700;margin-top:6px}
+  .trophy-cap .lbl{font-size:9px;color:var(--accent);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-top:2px}
+
+  .third-place{
+    margin-top:24px;background:rgba(6,182,212,0.06);
+    border:1px solid rgba(6,182,212,0.3);border-radius:16px;padding:22px 26px;
+    display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;
+  }
+  .third-place .medal{font-size:42px;line-height:1}
+  .third-place h4{font-family:'Fraunces',Georgia,serif;font-size:18px;color:#fff;font-weight:600;margin-bottom:4px}
+  .third-place .sub-line{color:#94A3B8;font-size:12px}
+  .third-place .game{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+  .third-place .game .t{display:flex;align-items:center;gap:8px;color:#CBD5E1;font-size:13px;font-weight:600}
+  .third-place .game .t .dot{width:10px;height:10px;border-radius:2px}
+  .third-place .game .t.w{color:#fff}
+  .third-place .game .vs{color:#64748B;font-size:11px;letter-spacing:1px}
+  .third-place .game .sc{font-family:'Fraunces',Georgia,serif;font-weight:700;color:#FBBF24;font-size:18px}
+
+  .bx-rationale{margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .bx-rationale .r-card{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+    border-radius:14px;padding:18px 20px;
+  }
+  .bx-rationale .r-card h5{
+    font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);
+    text-transform:uppercase;margin-bottom:8px;
+  }
+  .bx-rationale .r-card p{font-size:13px;color:#CBD5E1;line-height:1.55}
+
+  @media (max-width:1000px){
+    .bracket{grid-template-columns:repeat(7,minmax(140px,1fr));padding:18px 14px}
+    .bx-rationale{grid-template-columns:1fr}
+    .third-place{grid-template-columns:1fr;text-align:left}
+    .third-place .game{justify-content:flex-start}
+  }
+  @media (max-width:900px){
+    .tourney-chips{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    .bracket-headline{grid-template-columns:1fr}
+    .champion-tag{justify-self:start}
+    .tourney-chips{grid-template-columns:1fr}
+  }
+
   /* CONTACT */
   .contact{background:var(--surface-soft);text-align:left}
   .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
@@ -349,7 +472,8 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#work">Work</a>
-      <a href="#predictions" class="hot">Predictions</a>
+      <a href="#predictions">Predictions</a>
+      <a href="#bracket" class="hot">WC 2026 Bracket</a>
       <a href="#contact">Contact</a>
       <button class="toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
     </div>
@@ -641,11 +765,176 @@
   </div>
 </section>
 
+<section id="bracket" class="bracket-section">
+  <div class="wrap">
+    <div class="section-eyebrow">04 / WC 2026</div>
+    <h2 class="section-title">My FIFA World Cup 2026 bracket.</h2>
+    <p class="section-lede">One bracket. One champion. One underdog story. Ronaldo lifts the trophy on his last dance, and Samurai Blue write history with bronze. Locked in pre-tournament — call me before kickoff.</p>
+
+    <!-- Tournament summary chips -->
+    <div class="tourney-chips">
+      <div class="chip-card gold">
+        <div class="chip-label">Champion</div>
+        <div class="chip-val">🏆 Portugal</div>
+        <div class="chip-sub">Beat France 2–1 in the final</div>
+      </div>
+      <div class="chip-card">
+        <div class="chip-label">Runner-Up</div>
+        <div class="chip-val">🥈 France</div>
+        <div class="chip-sub">Edged Japan 2–1 in the SF</div>
+      </div>
+      <div class="chip-card">
+        <div class="chip-label">Third Place</div>
+        <div class="chip-val">🥉 Japan</div>
+        <div class="chip-sub">Beat Brazil 2–1 for bronze</div>
+      </div>
+      <div class="chip-card">
+        <div class="chip-label">Golden Boot</div>
+        <div class="chip-val">⚽ Mbappé</div>
+        <div class="chip-sub">8 goals · my pick</div>
+      </div>
+    </div>
+
+    <div class="trophy-cap">
+      <div class="ico">🏆</div>
+      <div class="who">Portugal</div>
+      <div class="lbl">World Champions 2026</div>
+    </div>
+
+    <div class="bracket">
+      <!-- R16 LEFT -->
+      <div class="round">
+        <div class="round-label">Round of 16</div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#DC2626"></span>POR</span><span class="sc">3</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#FCA5A5"></span>SUI</span><span class="sc">1</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#FBBF24"></span>ESP</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#6366F1"></span>CRO</span><span class="sc">0</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#F1F5F9"></span>ENG</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#3B82F6"></span>USA</span><span class="sc">0</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#FACC15"></span>BRA</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#16A34A"></span>MAR</span><span class="sc">0</span></div>
+        </div>
+      </div>
+
+      <!-- QF LEFT -->
+      <div class="round">
+        <div class="round-label">Quarter-Final</div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#DC2626"></span>POR</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#FBBF24"></span>ESP</span><span class="sc">1</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#F1F5F9"></span>ENG</span><span class="sc">0</span></div>
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#FACC15"></span>BRA</span><span class="sc">1</span></div>
+        </div>
+      </div>
+
+      <!-- SF LEFT -->
+      <div class="round sf">
+        <div class="round-label">Semi-Final</div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#DC2626"></span>POR</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#FACC15"></span>BRA</span><span class="sc">1</span></div>
+        </div>
+      </div>
+
+      <!-- FINAL -->
+      <div class="round final">
+        <div class="round-label">Final · 19 Jul</div>
+        <div class="bx-match final">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#DC2626"></span>POR</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#2563EB"></span>FRA</span><span class="sc">1</span></div>
+        </div>
+      </div>
+
+      <!-- SF RIGHT -->
+      <div class="round sf">
+        <div class="round-label">Semi-Final</div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#2563EB"></span>FRA</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#EF4444"></span>JPN</span><span class="sc">1</span></div>
+        </div>
+      </div>
+
+      <!-- QF RIGHT -->
+      <div class="round">
+        <div class="round-label">Quarter-Final</div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#EF4444"></span>JPN</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#94A3B8"></span>GER</span><span class="sc">1</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#38BDF8"></span>ARG</span><span class="sc">1</span></div>
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#2563EB"></span>FRA</span><span class="sc">2</span></div>
+        </div>
+      </div>
+
+      <!-- R16 RIGHT -->
+      <div class="round">
+        <div class="round-label">Round of 16</div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#EF4444"></span>JPN</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#22C55E"></span>SEN</span><span class="sc">1</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#94A3B8"></span>GER</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#FBBF24"></span>BEL</span><span class="sc">1</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#38BDF8"></span>ARG</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#0EA5E9"></span>URU</span><span class="sc">1</span></div>
+        </div>
+        <div class="bx-match">
+          <div class="bx-team win"><span class="nm"><span class="dot" style="background:#2563EB"></span>FRA</span><span class="sc">2</span></div>
+          <div class="bx-team"><span class="nm"><span class="dot" style="background:#1E40AF"></span>ITA</span><span class="sc">1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3rd Place Playoff -->
+    <div class="third-place">
+      <div class="medal">🥉</div>
+      <div>
+        <h4>Third-place playoff · Japan writes history</h4>
+        <div class="sub-line">Sat 18 Jul · AT&amp;T Stadium, Arlington — Samurai Blue&rsquo;s first-ever World Cup medal.</div>
+      </div>
+      <div class="game">
+        <div class="t w"><span class="dot" style="background:#EF4444"></span>JPN</div>
+        <div class="sc">2 – 1</div>
+        <div class="t"><span class="dot" style="background:#FACC15"></span>BRA</div>
+      </div>
+    </div>
+
+    <!-- Rationale cards -->
+    <div class="bx-rationale">
+      <div class="r-card">
+        <h5>🇵🇹 Why Portugal lifts it</h5>
+        <p>Generational midfield core (Bernardo, Vitinha, Bruno) finally peaks together. Defense quietly the most balanced in Europe. And Ronaldo&rsquo;s farewell tournament gives this squad a story-shaped tailwind that&rsquo;s hard to bet against.</p>
+      </div>
+      <div class="r-card">
+        <h5>🇯🇵 Why Japan finishes 3rd</h5>
+        <p>Best high-press in Asia, deepest player pool they&rsquo;ve ever had, and a coach who isn&rsquo;t scared of European giants. Stunning Germany at the QF is the moment. A tired squad runs out of legs vs France, then steadies for bronze.</p>
+      </div>
+      <div class="r-card">
+        <h5>🎯 Confidence</h5>
+        <p>Portugal as champion: <strong style="color:#FBBF24">22%</strong> — high for any one team in a 48-side field. Japan into top-4: <strong style="color:#FBBF24">9%</strong>. Both calls graded live in the tracker above as the tournament plays out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div>
-        <div class="section-eyebrow">04 / Contact</div>
+        <div class="section-eyebrow">05 / Contact</div>
         <h2>Let&rsquo;s talk data, code, or football.</h2>
         <p class="note">Currently based in Shrewsbury, MA. Open to data analyst and full-stack roles, freelance projects, or just a chat about who&rsquo;s winning the next match.</p>
       </div>
